@@ -1,14 +1,17 @@
-def majorityElement(nums):
-    candidate = None
-    count = 0
+def f(ls):
+    cnt = 0  # голоса текущего кандидата
+    gh = None  # кандидат
 
-    for x in nums:
-        if count == 0:
-            candidate = x
-
-        if x == candidate:
-            count += 1
+    for x in ls:
+        # все голоса за этого кандидата
+        # были уничтожены
+        if cnt == 0:
+            gh = x
+        # кандидат получил голос
+        if x == gh:
+            cnt += 1
+        # встретили его соперника
         else:
-            count -= 1
-
-    return candidate
+            cnt -= 1
+    # вернем того, кто не уничтожился
+    return gh
